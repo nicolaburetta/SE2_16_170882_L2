@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
    <head>
+       <link href="style.css" rel="stylesheet" type="text/css">
       <script src="script.js"></script>
    </head>
    <body>
@@ -17,6 +18,10 @@
             <td>10</td>
          </tr>
       </table>
-      <button onclick="insertColumn()">Click here</button>
+       <br>
+      <button onclick="insertItems()">Insert items</button>
+       <p class="insert-items-class" id="order-name">Insert here the name of the order items <input type="text"></p>
+       <p class="insert-items-class" id="order-quantity">Insert here its quantity <input type="text"></p>
+       <button onclick="placeOrder()" class="insert-items-class" id="order-button">Place order</button>
    </body>
 </html>

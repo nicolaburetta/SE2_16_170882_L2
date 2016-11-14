@@ -14,9 +14,13 @@ function placeOrder() {
         alert("Current item-quantity box value: " + itemQuantity.value + "\nReplace it with a positive number!");
     }
     
-    var c = itemNameAlreadyExists(itemName.value);
+    var columnIndex = itemNameAlreadyExists(itemName.value);
+    if (columnIndex == -1) {
+        
+    }
 }
 
+// return a number >= 0 if itemName already exists, -1 otherwise.
 function itemNameAlreadyExists(itemName) {
     var table = document.getElementById("table");
     var check = false;
@@ -27,5 +31,5 @@ function itemNameAlreadyExists(itemName) {
         check = (table.rows[0].cells[index].innerHTML == itemName);
     }
     
-    return check;
+    return index;
 }

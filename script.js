@@ -81,3 +81,16 @@ function updateLimit() {
         console.log("Limit updated to: " + limit);
     }
 }
+
+function checkLimit() {
+    var table = document.getElementById("table");
+    var total = 0;
+    
+    for (var i = 0; i < table.rows[1].cells.length; i++) {
+        total += parseInt(table.rows[1].cells[i].innerHTML);
+    }
+    
+    if (total > limit) {
+        alert("Attention!\nThe limit has been exceeded.");
+    }
+}

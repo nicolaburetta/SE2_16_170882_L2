@@ -19,14 +19,14 @@
          </tr>
       </table>
        <br>
-      <button onclick="insertItems()">Insert items</button>
+      <button onclick="insertItems();checkLimit()">Insert items</button>
        <p class="insert-items-class" id="order-name">Insert here the name of the order items <input type="text" id="input-order-name"></p>
        <p class="insert-items-class" id="order-quantity">Insert here its quantity <input type="text" id="input-order-quantity"></p>
-       <button onclick="placeOrder()" class="insert-items-class" id="order-button">Place order</button>
+       <button onclick="placeOrder();checkLimit()" class="insert-items-class" id="order-button">Place order</button>
        <p>
         <span id="limit">Limit: 30</span>
         <br>
-        Update limit to: <input type="text" id="input-limit"> <button onclick="updateLimit()" id="update-limit-button">Update limit</button>
+        Update limit to: <input type="text" id="input-limit"> <button onclick="updateLimit();checkLimit()" id="update-limit-button">Update limit</button>
        </p>
    </body>
 </html>

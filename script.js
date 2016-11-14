@@ -4,6 +4,16 @@ function insertItems() {
     document.getElementById("order-button").style.display = "block";
 }
 
+function hideElements() {
+    document.getElementById("input-order-name").value = "";
+    document.getElementById("input-order-quantity").value = "";
+    document.getElementById("order-name").style.display = "none";
+    document.getElementById("order-quantity").style.display = "none";
+    document.getElementById("order-button").style.display = "none";
+    
+    console.log("Place order elements are now hidden.");
+}
+
 function placeOrder() {
 	var itemName = document.getElementById("input-order-name");
     var itemQuantity = document.getElementById("input-order-quantity");
@@ -16,20 +26,38 @@ function placeOrder() {
     
     var columnIndex = itemNameAlreadyExists(itemName.value);
     if (columnIndex == -1) {
+        var row0 = document.getElementById("row-item");
+        var row1 = document.getElementById("row-quantity");
+        var newCell0 = row0.insertCell(columnIndex);
+        var newCell1 = row1.insertCell(columnIndex);
+        newCell0.innerHTML = itemName.value;
+        newCell1.innerHTML = itemQuantity.value;
         
+        console.log("New column insert for the item " + itemName.value + "; quantity = " + itemQuantity.value);
+    } else {
+        table.rows[1].cells[columnIndex].innerHTML = itemQuantity.value;
+        
+        console.log("Quantity for the item " + itemName.value + " updated to " + itemQuantity.value);
     }
+    
+    hideElements();
 }
 
 // return a number >= 0 if itemName already exists, -1 otherwise.
 function itemNameAlreadyExists(itemName) {
     var table = document.getElementById("table");
+    var columns = table.rows[0].cells.length;
     var check = false;
-    var index = -1;
+    var index = 0;
     
-    while (!check && index < table.rows[0].cells.length) {
-        index++;
+    while (!check && index < columns) {
         check = (table.rows[0].cells[index].innerHTML == itemName);
+        index++;
     }
     
-    return index;
+    if (!check) {
+        return -1;
+    } else {
+        return index - 1;
+    }
 }
